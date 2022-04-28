@@ -1,0 +1,4 @@
+SELECT f.name, d.effective_date FROM dss_interview.daily_unit_price d join fund f on d.fund_id = f.id
+where f.status = 'verified' and d.status = 'verified'
+and d.effective_date = (select max(sd.effective_date) from daily_unit_price sd)
+group by f.id
